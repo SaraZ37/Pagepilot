@@ -132,5 +132,14 @@ public class Book {
                 ", author=" + (author != null ? author.getName() : "null") +
                 ", loanIDs=" + getLoanID() +
                 '}';
+
+    } @Column (name = "is favorite")
+    private Boolean isFavorite;
+    public Boolean getIsFavorite() {
+        return isFavorite;
+    }
+
+    public void setIsFavorite(Boolean isFavorite) {
+        this.isFavorite = isFavorite;
     }
 }

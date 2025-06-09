@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Trelleborgs bibliotek</title>
+    <link rel="stylesheet" href="user.css" />
+</head>
+<body>
+<header class="site-header">
+    <img src="logo.png" alt="bibliotek" class="logo" />
+    <nav class="main-nav">
+        <a href="#">Alla böcker</a>
+        <a href="#">Vår bibliotek</a>
+        <a href="#" class="search-icon">🔍 Sök</a>
+    </nav>
+    <div class="header-right">
+        <a href="#" class="button">📄 Mina uppgifter</a>
+        <a href="#" class="button">🔓 Logga ut</a>
+    </div>
+</header>
+
+<main class="main-content">
+    <h1>Mina sidor</h1>
+
+    <div class="tabs">
+        <button class="tab active">Överblick</button>
+        <button class="tab">Mina listor och recensioner</button>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-item">
+            <button class="accordion-header">Mina lån</button>
+            <div class="accordion-body">Innehåll för Mina lån...</div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-header">Min lånehistorik</button>
+            <div class="accordion-body">Innehåll för lånehistorik...</div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-header">Mina reservationer</button>
+            <div class="accordion-body">Innehåll för reservationer...</div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-header">Avgifter</button>
+            <div class="accordion-body">Innehåll för avgifter...</div>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('open');
+            const body = button.nextElementSibling;
+            body.style.display = body.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
+</body>
+</html>

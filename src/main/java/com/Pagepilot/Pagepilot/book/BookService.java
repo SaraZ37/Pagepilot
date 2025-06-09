@@ -22,7 +22,7 @@ public class BookService {
     }
 
     public List<Book> filterBooks(String category, Integer year) {
-        return bookRepository.findByCategorycodeAndPublicationYear(category, year);
+        return bookRepository.findByCategoryAndPublicationYear(category, year);
 
 
     }

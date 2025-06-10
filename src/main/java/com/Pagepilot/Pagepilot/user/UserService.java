@@ -15,4 +15,9 @@ public class UserService {
 
         return userRepository.findAll();
     }
+
+    public User findById(String userId) {
+        return userRepository.findById(Integer.valueOf(userId))
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+    }
 }

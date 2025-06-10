@@ -113,8 +113,10 @@ public class Loan {
     public String toString() {
         return "Loan{" +
                 "loanId=" + loanId +
-                ", user=" + user +
-                ", book=" + book +
+                ", userID=" + user.getUserId() +
+                ", userName=" + user.getUsername() +
+                ", bookTitle=" + book.getTitle() +
+                ", bookAuthor=" + book.getAuthorName() +
                 ", borrowedDate=" + borrowedDate +
                 ", dueDate=" + dueDate +
                 ", returnDate=" + returnDate +

@@ -89,7 +89,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", loans=" + loans +
+                ", loanIDs=" + getLoanID() +
                 '}';
     }
 }

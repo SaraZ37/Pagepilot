@@ -25,7 +25,7 @@ public class Book {
     private String title;
 
     @Column(name = "year")
-    private Integer publicationYear;
+    private Integer year;
 
     @Column(name = "category")
     private String category;
@@ -47,7 +47,7 @@ public class Book {
     public Book(Integer bookId, String title, Integer publicationYear, String category, Integer isAvailable, Author author, Set<Loan> loans) {
         this.bookId = bookId;
         this.title = title;
-        this.publicationYear = publicationYear;
+        this.year = year;
         this.category = category;
         this.isAvailable = isAvailable;
         this.author = author;
@@ -75,11 +75,11 @@ public class Book {
     }
 
     public Integer getPublicationYear() {
-        return publicationYear;
+        return year;
     }
 
     public void setPublicationYear(Integer publicationYear) {
-        this.publicationYear = publicationYear;
+        this.year = publicationYear;
     }
 
     public String getCategory() {
@@ -126,7 +126,7 @@ public class Book {
         return "Book{" +
                 "bookId=" + bookId +
                 ", title='" + title + '\'' +
-                ", publicationYear=" + publicationYear +
+                ", year=" + year +
                 ", category='" + category + '\'' +
                 ", isAvailable=" + isAvailable +
                 ", author=" + (author != null ? author.getName() : "null") +

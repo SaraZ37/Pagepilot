@@ -24,7 +24,7 @@ public class BookController {
     }
 
     // Search by title or author (US02)
-    @GetMapping("/search")
+    @GetMapping("/search")//http://localhost:8080/books/search?q=sali
     public ResponseEntity<?> searchBooks(@RequestParam("q") String keyword) {
         List<Book> results = bookService.searchBooks(keyword);
         if (results.isEmpty()) {
@@ -34,7 +34,7 @@ public class BookController {
     }
 
     // Filter by category and year (US03)
-    @GetMapping("/filter")
+    @GetMapping("/filter")//need to refine it because now need to use both param http://localhost:8080/books/filter?category=Fiction&year=1960
     public ResponseEntity<?> filterBooks(
             @RequestParam(required = false) String category,
             @RequestParam(required = false) Integer year) {

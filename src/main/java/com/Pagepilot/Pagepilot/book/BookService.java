@@ -18,13 +18,11 @@ public class BookService {
     }
 
     public List<Book> searchBooks(String keyword) {
-        return bookRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(keyword, keyword);
+        return bookRepository. searchBooks(keyword);
     }
 
     public List<Book> filterBooks(String category, Integer year) {
-        return bookRepository.findByCategoryAndPublicationYear(category, year);
-
-
+        return bookRepository.findByCategoryAndYear(category, year);
     }
     public List<Book> getFavoriteBooks() {
         return bookRepository.findByIsFavoriteTrue();

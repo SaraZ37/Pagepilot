@@ -29,7 +29,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{userId}/loans")
+    /*@GetMapping("/{userId}/loans")
     public ResponseEntity<?> getUserLoans(@PathVariable String userId) {
         User user = userService.findById(userId);
         List<Loan> loansHistory = loanService.getPastUserLoans(user);
@@ -38,15 +38,18 @@ public class UserController {
             return ResponseEntity.ok("Your loan history is empty");
         }
         if (loansHistory.isEmpty() && !currentLoans.isEmpty()) {
-            return ResponseEntity.ok("Current loans: " + currentLoans);
+            return ResponseEntity.ok(currentLoans);
         }
         if (currentLoans.isEmpty() && !loansHistory.isEmpty()) {
-            return ResponseEntity.ok("Loans history: " + loansHistory);
+            return ResponseEntity.ok(loansHistory);
         }
-        return ResponseEntity.ok("Loans history: " + loansHistory + "\nCurrent loans: " + currentLoans);
-    }
-    /*@GetMapping("/{userId}/loans")
-    public ResponseEntity<Map<String, Object>> getUserLoans(@PathVariable String userId) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("loansHistory", loansHistory);
+        result.put("currentLoans", currentLoans);
+        return ResponseEntity.ok(result);
+    }*/
+    @GetMapping("/{userId}/loans")
+    public ResponseEntity<?> getUserLoans(@PathVariable String userId) {
         User user = userService.findById(userId);
         List<Loan> currentLoans = loanService.getCurrentUserLoans(user);
         List<Loan> loansHistory = loanService.getPastUserLoans(user);
@@ -54,7 +57,16 @@ public class UserController {
         Map<String, Object> result = new HashMap<>();
         result.put("currentLoans", currentLoans);
         result.put("loansHistory", loansHistory);
+        if (currentLoans.isEmpty() && loansHistory.isEmpty()) {
+            return ResponseEntity.ok("Your loan history is empty");
+        }
+        if (loansHistory.isEmpty() && !currentLoans.isEmpty()) {
+            return ResponseEntity.ok(result.get("currentLoans"));
+        }
+        if (currentLoans.isEmpty() && !loansHistory.isEmpty()) {
+            return ResponseEntity.ok(result.get("loansHistory"));
+        }
         return ResponseEntity.ok(result);
-    }*/
+    }
 
 }

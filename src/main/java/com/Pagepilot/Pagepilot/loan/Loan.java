@@ -5,6 +5,7 @@ import com.Pagepilot.Pagepilot.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -47,6 +48,9 @@ public class Loan {
 
     }
 
+    public Loan(LoanRequestDto loanRequestDto) {
+    }
+
     public Integer getLoanId() {
         return loanId;
     }
@@ -70,6 +74,11 @@ public class Loan {
         this.user = user;
     }
 
+    @JsonProperty("bookID")
+    public Integer getBookID() {
+
+        return book != null ? book.getBookId() : null;
+    }
     @JsonProperty("bookTitle")
     public String getBookTitle() {
 

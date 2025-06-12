@@ -39,6 +39,9 @@ public class User {
 
     }
 
+    public User(Integer userId) {
+    }
+
     public Integer getUserId() {
         return userId;
     }

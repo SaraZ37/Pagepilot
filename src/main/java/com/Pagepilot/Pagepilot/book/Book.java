@@ -58,6 +58,9 @@ public class Book {
 
     }
 
+    public Book(Integer bookId) {
+    }
+
     public Integer getBookId() {
         return bookId;
     }

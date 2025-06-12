@@ -22,7 +22,7 @@ public class BookService {
     }
 
     public List<Book> filterBooks(String category, Integer year) {
-        return bookRepository.findByCategoryAndYear(category, year);
+        return bookRepository.findByCategoryOrYear(category, year);
     }
     public List<Book> getFavoriteBooks() {
         return bookRepository.findByIsFavoriteTrue();

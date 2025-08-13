@@ -136,7 +136,7 @@ public class Book {
                 ", loanIDs=" + getLoanID() +
                 '}';
 
-    } @Column (name = "is favorite")
+    } @Column (name = "is_favorite")
     private Boolean isFavorite;
     public Boolean getIsFavorite() {
         return isFavorite;

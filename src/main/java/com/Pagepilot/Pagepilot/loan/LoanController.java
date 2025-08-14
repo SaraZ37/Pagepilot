@@ -5,6 +5,9 @@ import com.Pagepilot.Pagepilot.book.BookService;
 import com.Pagepilot.Pagepilot.user.User;
 import com.Pagepilot.Pagepilot.user.UserRepository;
 import com.Pagepilot.Pagepilot.user.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
@@ -12,10 +15,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("api/loans")
+@RequestMapping("api/loans")@Tag(name = "Loan Management", description = "APIs for borrowing and returning books")
+
 public class LoanController {
 
     private final LoanService loanService;
@@ -28,6 +33,7 @@ public class LoanController {
     public List<Loan> getAllLoans(){
         return loanService.getAllLoans();
     }
+
 
     @PostMapping
     public ResponseEntity<Loan> createLoan(@RequestBody LoanRequestDto loanRequestDto) {

@@ -11,10 +11,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class LoanService {
@@ -40,14 +39,12 @@ public class LoanService {
     }
     public List<Loan> getCurrentUserLoans(User user) {
         List<Loan> loans = loanRepository.findByUser(user);
-
         return loans.stream()
                 .filter(loan -> loan.getReturnDate() == null)
                 .toList();
     }
     public List<Loan> getPastUserLoans(User user) {
         List<Loan> loans = loanRepository.findByUser(user);
-
         return loans.stream()
                 .filter(loan -> loan.getReturnDate() != null)
                 .toList();
@@ -77,3 +74,5 @@ public class LoanService {
 
     }
 }
+
+

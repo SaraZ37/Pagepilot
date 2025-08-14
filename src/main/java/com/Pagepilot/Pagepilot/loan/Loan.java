@@ -131,4 +131,5 @@ public class Loan {
                 ", returnDate=" + returnDate +
                 '}';
     }
+
 }

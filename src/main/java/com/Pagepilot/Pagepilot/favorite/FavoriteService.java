@@ -4,6 +4,7 @@ import com.Pagepilot.Pagepilot.user.User;
 import com.Pagepilot.Pagepilot.user.UserRepository;
 import com.Pagepilot.Pagepilot.book.Book;
 import com.Pagepilot.Pagepilot.book.BookRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -23,26 +24,29 @@ public class FavoriteService {
 
     // Get all favorite books for a user
     public List<Favorite> getUserFavorites(Integer userId) {
-        return favoriteRepository.findByUser(userId);
+        User user = userRepository.findByUserId(userId).orElse(null);
+        if (user == null) {
+            return List.of();
+        }
+        return favoriteRepository.findByUser(user);
     }
 
     // Add a book to favorites
     public String addToFavorites(Integer userId, Integer bookId) {
-        // Check if already in favorites
-        Integer count = favoriteRepository.countByUserAndBook(userId, bookId);
-        if (count > 0) {
-            return "Book is already in favorites";
-        }
-
         // Find user and book
-        User user = userRepository.findById(userId).orElse(null);
-        Book book = bookRepository.findById(bookId).orElse(null);
+        User user = userRepository.findByUserId(userId).orElse(null);
+        Book book = bookRepository.findByBookId(bookId).orElse(null);
 
         if (user == null) {
             return "User not found";
         }
         if (book == null) {
             return "Book not found";
+        }
+
+        // Check if already in favorites
+        if (favoriteRepository.existsByUserAndBook(user, book)) {
+            return "Book is already in favorites";
         }
 
         // Add to favorites
@@ -52,26 +56,49 @@ public class FavoriteService {
     }
 
     // Remove books from favorites
+    @Transactional
     public String removeFromFavorites(Integer userId, Integer bookId) {
-        // Check if a book is in favorites
-        Integer count = favoriteRepository.countByUserAndBook(userId, bookId);
-        if (count == 0) {
+        // Find user and book
+        User user = userRepository.findByUserId(userId).orElse(null);
+        Book book = bookRepository.findByBookId(bookId).orElse(null);
+
+
+        if (user == null) {
+            return "User not found";
+        }
+        if (book == null) {
+            return "Book not found";
+        }
+
+        // Check if the book is in favorites
+        if (!favoriteRepository.existsByUserAndBook(user, book)) {
             return "Book is not in favorites";
         }
 
         // Remove from favorites
-        favoriteRepository.deleteByUserAndBook(userId, bookId);
+        favoriteRepository.deleteByUserAndBook(user,book);
         return "Book removed from favorites successfully";
     }
 
     // Toggle favorite
+    @Transactional
     public String toggleFavorite(Integer userId, Integer bookId) {
-        Integer count = favoriteRepository.countByUserAndBook(userId, bookId);
-        if (count > 0) {
-            favoriteRepository.deleteByUserAndBook(userId, bookId);
+        User user = userRepository.findByUserId(userId).orElse(null);
+        Book book = bookRepository.findByBookId(bookId).orElse(null);
+        if (user == null) {
+            return "User not found";
+        }
+        if (book == null) {
+            return "Book not found";
+        }
+
+        if (favoriteRepository.existsByUserAndBook(user, book)) {
+            favoriteRepository.deleteByUserAndBook(user, book);
             return "Book removed from favorites";
         } else {
-            return addToFavorites(userId, bookId);
+            Favorite favorite = new Favorite(user, book);
+            favoriteRepository.save(favorite);
+            return "Book added to favorites";
         }
     }
 }

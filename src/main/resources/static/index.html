@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Library · Catalog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="app-header">
+  <div class="app-header-inner container">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <span>Library</span>
+    </div>
+    <nav class="nav">
+      <a class="active" href="index.html">Catalog</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="controls">
+    <h2 class="section-title">Find your next read</h2>
+    <div class="controls-grid">
+      <div class="field" style="grid-column: span 6;">
+        <label for="searchAll">Search</label>
+        <div class="input"><input id="searchAll" type="search" placeholder="Search by title or author"></div>
+      </div>
+      <div class="field" style="grid-column: span 3;">
+        <label for="filterTitle">Title</label>
+        <div class="input"><input id="filterTitle" type="text" placeholder="e.g., 1984"></div>
+      </div>
+      <div class="field" style="grid-column: span 3;">
+        <label for="filterAuthor">Author</label>
+        <div class="input"><input id="filterAuthor" type="text" placeholder="e.g., Orwell"></div>
+      </div>
+      <div class="field" style="grid-column: span 2;">
+        <label for="filterYear">Year</label>
+        <div class="input"><input id="filterYear" type="number" inputmode="numeric" min="0" placeholder="e.g., 1949"></div>
+      </div>
+      <div class="field" style="grid-column: span 4;">
+        <label>Status</label>
+        <div class="checkbox-row">
+          <label><input id="statusAvailable" type="checkbox" checked> <span>Available</span></label>
+          <label><input id="statusTaken" type="checkbox" checked> <span>Taken</span></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="books-grid" id="booksGrid"></section>
+</main>
+
+<script src="books.js" defer></script>
+</body>
+</html>

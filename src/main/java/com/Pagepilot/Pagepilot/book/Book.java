@@ -44,7 +44,7 @@ public class Book {
     @JsonIgnore
     private Set<Loan> loans;
 
-    public Book(Integer bookId, String title, Integer publicationYear, String category, Integer isAvailable, Author author, Set<Loan> loans) {
+    public Book(Integer bookId, String title, Integer year, String category, Integer isAvailable, Author author, Set<Loan> loans) {
         this.bookId = bookId;
         this.title = title;
         this.year = year;
@@ -77,12 +77,12 @@ public class Book {
         this.title = title;
     }
 
-    public Integer getPublicationYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setPublicationYear(Integer publicationYear) {
-        this.year = publicationYear;
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public String getCategory() {

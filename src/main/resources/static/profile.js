@@ -12,7 +12,7 @@
         try { return new Set(JSON.parse(localStorage.getItem(key) || '[]')); } catch (_) { return new Set(); }
     }
 
-    function createBookRow(book) {
+/*    function createBookRow(book) {
         return el('div', { className: 'book-row' }, [
             el('img', { src: book.cover, alt: book.title + ' cover' }),
             el('div', null, [
@@ -21,7 +21,7 @@
             ]),
             el('span', { className: 'badge ' + (book.status === 'taken' ? 'taken' : 'available') }, [text(book.status === 'taken' ? 'Taken' : 'Available')])
         ]);
-    }
+    }*/
 
     document.addEventListener('DOMContentLoaded', function() {
         const byId = Object.fromEntries((window.BOOKS || []).map(function(b) { return [b.id, b]; }));

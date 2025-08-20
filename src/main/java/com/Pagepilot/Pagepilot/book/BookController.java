@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -67,7 +68,15 @@ public class BookController {
             return ResponseEntity.ok(favorites);
         }
 
-    }@PutMapping("/favorites/{id}")
+    }
+
+    /*@GetMapping("/favorites")
+    public List<Book> getFavoriteBooks() {
+        return bookService.getFavoriteBooks();
+    }*/
+
+
+    @PutMapping("/favorites/{id}")
     public ResponseEntity<Book> toggleFavorite(@PathVariable Integer id) {
         Book updatedBook = bookService.toggleFavorite(id);
         return ResponseEntity.ok(updatedBook);

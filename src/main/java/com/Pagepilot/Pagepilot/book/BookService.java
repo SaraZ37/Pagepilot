@@ -26,9 +26,8 @@ public class BookService {
     }
     public List<Book> getFavoriteBooks() {
         return bookRepository.findByIsFavoriteTrue();
-
-
-    }public Book toggleFavorite(Integer bookId) {
+    }
+    public Book toggleFavorite(Integer bookId) {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Book not found"));
         book.setIsFavorite(!Boolean.TRUE.equals(book.getIsFavorite())); //

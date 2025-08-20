@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class LoanService {
@@ -35,6 +32,7 @@ public class LoanService {
     public List<Loan> getAllLoans(){
         return loanRepository.findAll();
     }
+
     public List<Loan> getAllUserLoans(User user) {
         return loanRepository.findByUser(user);
     }

@@ -275,6 +275,12 @@ main {
     border-color: var(--border);
 }
 
+.return-button.is-returned {
+    background: #f3f4f6;
+    color: #6b7280;
+    border-color: var(--border);
+}
+
 .badge {
     padding: 4px 8px;
     font-size: 12px;
@@ -285,6 +291,7 @@ main {
 
 .badge.available { color: var(--success); border-color: #bbf7d0; background: #ecfdf5; }
 .badge.taken { color: #9ca3af; background: #f3f4f6; }
+.badge.dates {color: var(--accent); border-color: #bbf7d0; background: #ecfdf5; }
 
 .hidden {
     display: none !important;

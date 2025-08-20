@@ -33,6 +33,9 @@ public class Book {
     @Column(name = "is_available")
     private Integer isAvailable;
 
+    @Column (name = "is_favorite")
+    private Boolean isFavorite;
+
     @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     /*@JsonManagedReference */
@@ -136,8 +139,7 @@ public class Book {
                 ", loanIDs=" + getLoanID() +
                 '}';
 
-    } @Column (name = "is_favorite")
-    private Boolean isFavorite;
+    }
     public Boolean getIsFavorite() {
         return isFavorite;
     }

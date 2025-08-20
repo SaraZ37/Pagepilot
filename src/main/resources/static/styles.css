@@ -6,7 +6,7 @@
     --muted: #6b7280;
     --border: #e5e7eb;
     --accent: #2563eb;
-    --accent-600: #1d4ed8;
+    --accent-600: #4c0edd;
     --success: #16a34a;
     --warning: #f59e0b;
     --danger: #ef4444;
@@ -263,6 +263,12 @@ main {
     color: #fff;
 }
 
+.button.accent-600 {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--accent), #ae1c48);
+    color: #fff;
+}
+
 .button.gray {
     border-color: var(--border);
     background: #f3f4f6;
@@ -270,12 +276,6 @@ main {
 }
 
 .take-button.is-taken {
-    background: #f3f4f6;
-    color: #6b7280;
-    border-color: var(--border);
-}
-
-.return-button.is-returned {
     background: #f3f4f6;
     color: #6b7280;
     border-color: var(--border);
@@ -323,7 +323,7 @@ main {
 
 .book-row {
     display: grid;
-    grid-template-columns: 44px 1fr auto;
+    grid-template-columns: 80px 1fr auto;
     gap: 12px;
     align-items: center;
     padding: 10px;
@@ -333,7 +333,7 @@ main {
 }
 
 .book-row img {
-    width: 44px;
+    width: 80px;
     height: 60px;
     object-fit: cover;
     border-radius: 8px;

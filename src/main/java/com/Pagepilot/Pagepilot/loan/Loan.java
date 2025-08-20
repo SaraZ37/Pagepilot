@@ -5,9 +5,7 @@ import com.Pagepilot.Pagepilot.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "loans")
@@ -27,15 +25,15 @@ public class Loan {
     private Book book;
 
     @Column(name = "borrow_date")
-    private LocalDateTime borrowedDate;
+    private LocalDate borrowedDate;
 
     @Column(name = "due_date")
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
 
     @Column(name = "return_date")
-    private LocalDateTime returnDate;
+    private LocalDate returnDate;
 
-    public Loan(Integer loanId, User user, Book book, LocalDateTime borrowedDate, LocalDateTime dueDate, LocalDateTime returnDate) {
+    public Loan(Integer loanId, User user, Book book, LocalDate borrowedDate, LocalDate dueDate, LocalDate returnDate) {
         this.loanId = loanId;
         this.user = user;
         this.book = book;
@@ -94,27 +92,27 @@ public class Loan {
         this.book = book;
     }
 
-    public LocalDateTime getBorrowedDate() {
+    public LocalDate getBorrowedDate() {
         return borrowedDate;
     }
 
-    public void setBorrowedDate(LocalDateTime borrowedDate) {
+    public void setBorrowedDate(LocalDate borrowedDate) {
         this.borrowedDate = borrowedDate;
     }
 
-    public LocalDateTime getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
-    public LocalDateTime getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(LocalDateTime returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 

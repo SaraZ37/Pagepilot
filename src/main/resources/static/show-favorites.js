@@ -20,15 +20,21 @@ fetch("books/favorites")
 function displayFavorites(favorites) {
     favorites.forEach(favorite => {
         favoritesList.innerHTML += `
-    <div class="book-row">
-  <img src="https://cdn-icons-png.freepik.com/512/12145/12145314.png" alt="Book cover image">
-  <div>
+<div class="book-row">
+ <img src="https://images.emojiterra.com/google/noto-emoji/unicode-16.0/color/share/1fa75.jpg" alt="Book cover image">
+ <div>
     <p class="row-title">${favorite.title}</p>
     <p class="row-meta">${favorite.authorName} · ${favorite.year} · ${favorite.category}</p>
-    
-  </div>
-  <button class="button primary return-button">Take</button>
+ </div>
+ ${favorite.isAvailable === 'Available'
+            ? `<span class="badge available">${favorite.isAvailable}</span>`
+            : `<span class="badge taken">${favorite.isAvailable}</span>`}
+         
+          
 </div>
+${favorite.isAvailable === 'Available'
+            ? '<button class="button primary take-button">Take</button>'
+            : '<button class="button gray take-button is-taken">Reserve</button>'}
             `;
 
     });

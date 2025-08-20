@@ -31,7 +31,8 @@ public class Book {
     private String category;
 
     @Column(name = "is_available")
-    private Integer isAvailable;
+    @Enumerated(EnumType.STRING)
+    private Availability isAvailable;
 
     @Column (name = "is_favorite")
     private Boolean isFavorite;
@@ -47,7 +48,7 @@ public class Book {
     @JsonIgnore
     private Set<Loan> loans;
 
-    public Book(Integer bookId, String title, Integer year, String category, Integer isAvailable, Author author, Set<Loan> loans) {
+    public Book(Integer bookId, String title, Integer year, String category, Availability isAvailable, Author author, Set<Loan> loans) {
         this.bookId = bookId;
         this.title = title;
         this.year = year;
@@ -96,14 +97,6 @@ public class Book {
         this.category = category;
     }
 
-    public Integer getIsAvailable() {
-        return isAvailable;
-    }
-
-    public void setIsAvailable(Integer isAvailable) {
-        this.isAvailable = isAvailable;
-    }
-
     @JsonProperty("authorName")
     public String getAuthorName() {
         return author != null ? author.getName() : null;
@@ -122,9 +115,22 @@ public class Book {
                 .map(Loan::getLoanId)
                 .toList() : null;
     }
-
     public void setLoans(Set<Loan> loans) {
         this.loans = loans;
+    }
+    public Boolean getIsFavorite() {
+        return isFavorite;
+    }
+    public void setIsFavorite(Boolean isFavorite) {
+        this.isFavorite = isFavorite;
+    }
+
+    public Availability getIsAvailable() {
+        return isAvailable;
+    }
+
+    public void setIsAvailable(Availability isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
     @Override
@@ -140,11 +146,5 @@ public class Book {
                 '}';
 
     }
-    public Boolean getIsFavorite() {
-        return isFavorite;
-    }
 
-    public void setIsFavorite(Boolean isFavorite) {
-        this.isFavorite = isFavorite;
-    }
 }

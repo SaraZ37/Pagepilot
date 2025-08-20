@@ -1,5 +1,6 @@
 package com.Pagepilot.Pagepilot.loan;
 
+import com.Pagepilot.Pagepilot.book.Availability;
 import com.Pagepilot.Pagepilot.book.Book;
 import com.Pagepilot.Pagepilot.book.BookRepository;
 import com.Pagepilot.Pagepilot.user.User;
@@ -30,7 +31,8 @@ public class LoanService {
 
 
     public List<Loan> getAllLoans(){
-        return loanRepository.findAll();
+        /*return loanRepository.findAll();*/
+        return loanRepository.findByReturnDateIsNull();
     }
 
     public List<Loan> getAllUserLoans(User user) {
@@ -56,16 +58,16 @@ public class LoanService {
         User user = userRepository.findByUserId(loanRequestDto.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + loanRequestDto.getUserId()));
         Book book = bookRepository.findByBookId(loanRequestDto.getBookId()).orElseThrow(() -> new EntityNotFoundException("Book not found with id: " + loanRequestDto.getBookId()));
-        Integer isAvailable = book.getIsAvailable();
-        if (isAvailable == 1) {
-            book.setIsAvailable(0);
+        Availability isAvailable = book.getIsAvailable();
+        if (isAvailable == null || isAvailable.equals(Availability.Available)) {
+            book.setIsAvailable(Availability.Taken);
             bookRepository.save(book);
 
             Loan loan = new Loan();
             loan.setUser(user);
             loan.setBook(book);
-            loan.setBorrowedDate(LocalDateTime.now());
-            loan.setDueDate(LocalDateTime.now().plusWeeks(2));
+            loan.setBorrowedDate(LocalDate.now());
+            loan.setDueDate(LocalDate.now().plusWeeks(2));
             loan.setReturnDate(null);
 
             return loanRepository.save(loan);

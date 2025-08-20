@@ -32,13 +32,17 @@ function myDisplay(books) {
         <h3 class="book-title">${book.title}</h3>
         <p class="book-meta">${book.authorName} · ${book.year} · ${book.category}</p>
         <div class="actions">
-         <!--<span class="badge available"></span-->
-          <button class="button primary take-button">Take</button>
+        ${book.isAvailable === 'Available'
+                ? `<span class="badge available">${book.isAvailable}</span>`
+                : `<span class="badge taken">${book.isAvailable}</span>`}
+         
+          ${book.isAvailable === 'Available'
+                ? '<button class="button primary take-button">Take</button>'
+                : '<button class="button gray take-button is-taken">Reserve</button>'}
         </div>
       </div>
     </>
             `;
-
     });
 }
 

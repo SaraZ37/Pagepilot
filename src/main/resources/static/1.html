@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Library · Catalog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="app-header">
+  <div class="app-header-inner container">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <span>Library</span>
+    </div>
+    <nav class="nav">
+      <a class="active" href="index.html">Catalog</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="controls">
+    <h2 class="section-title">Find your next read</h2>
+    <div class="controls-grid">
+      <div class="field" style="grid-column: span 6;">
+        <label for="searchAll">Search</label>
+        <div class="input"><input id="searchAll" type="search" placeholder="Search by title or author"></div>
+      </div>
+      <div class="field" style="grid-column: span 3;">
+        <label for="filterTitle">Title</label>
+        <div class="input"><input id="filterTitle" type="text" placeholder="e.g., 1984"></div>
+      </div>
+      <div class="field" style="grid-column: span 3;">
+        <label for="filterAuthor">Author</label>
+        <div class="input"><input id="filterAuthor" type="text" placeholder="e.g., Orwell"></div>
+      </div>
+      <div class="field" style="grid-column: span 2;">
+        <label for="filterYear">Year</label>
+        <div class="input"><input id="filterYear" type="number" inputmode="numeric" min="0" placeholder="e.g., 1949"></div>
+      </div>
+      <div class="field" style="grid-column: span 4;">
+        <label>Status</label>
+        <div class="checkbox-row">
+          <label><input id="statusAvailable" type="checkbox" checked> <span>Available</span></label>
+          <label><input id="statusTaken" type="checkbox" checked> <span>Taken</span></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="books-grid" id="booksGrid">
+    <article class="book-card" data-id="gatsby" data-title="The Great Gatsby" data-author="F. Scott Fitzgerald" data-year="1925" data-status="available">
+      <div class="cover">
+        <img class="ratio" src="https://picsum.photos/seed/gatsby/400/560" alt="The Great Gatsby cover">
+        <button class="favorite-button" aria-label="Add to favorites" title="Add to favorites">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.01 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.01 20 8.5c0 3.78-3.4 6.86-8.55 11.54l-1.449 1.31z"/></svg>
+        </button>
+      </div>
+      <div class="book-info">
+        <h3 class="book-title">The Great Gatsby</h3>
+        <p class="book-meta">F. Scott Fitzgerald · 1925</p>
+        <div class="actions">
+          <span class="badge available">Available</span>
+          <button class="button primary take-button">Take</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card" data-id="1984" data-title="1984" data-author="George Orwell" data-year="1949" data-status="available">
+      <div class="cover">
+        <img class="ratio" src="https://picsum.photos/seed/1984/400/560" alt="1984 cover">
+        <button class="favorite-button" aria-label="Add to favorites" title="Add to favorites">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.01 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.01 20 8.5c0 3.78-3.4 6.86-8.55 11.54l-1.449 1.31z"/></svg>
+        </button>
+      </div>
+      <div class="book-info">
+        <h3 class="book-title">1984</h3>
+        <p class="book-meta">George Orwell · 1949</p>
+        <div class="actions">
+          <span class="badge available">Available</span>
+          <button class="button primary take-button">Take</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card" data-id="mockingbird" data-title="To Kill a Mockingbird" data-author="Harper Lee" data-year="1960" data-status="taken">
+      <div class="cover">
+        <img class="ratio" src="https://picsum.photos/seed/mockingbird/400/560" alt="To Kill a Mockingbird cover">
+        <button class="favorite-button" aria-label="Add to favorites" title="Add to favorites">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.01 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.01 20 8.5c0 3.78-3.4 6.86-8.55 11.54l-1.449 1.31z"/></svg>
+        </button>
+      </div>
+      <div class="book-info">
+        <h3 class="book-title">To Kill a Mockingbird</h3>
+        <p class="book-meta">Harper Lee · 1960</p>
+        <div class="actions">
+          <span class="badge taken">Taken</span>
+          <button class="button gray take-button">Taken</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card" data-id="bravenew" data-title="Brave New World" data-author="Aldous Huxley" data-year="1932" data-status="available">
+      <div class="cover">
+        <img class="ratio" src="https://picsum.photos/seed/bravenew/400/560" alt="Brave New World cover">
+        <button class="favorite-button" aria-label="Add to favorites" title="Add to favorites">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.01 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.01 20 8.5c0 3.78-3.4 6.86-8.55 11.54l-1.449 1.31z"/></svg>
+        </button>
+      </div>
+      <div class="book-info">
+        <h3 class="book-title">Brave New World</h3>
+        <p class="book-meta">Aldous Huxley · 1932</p>
+        <div class="actions">
+          <span class="badge available">Available</span>
+          <button class="button primary take-button">Take</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card" data-id="catcher" data-title="The Catcher in the Rye" data-author="J. D. Salinger" data-year="1951" data-status="available">
+      <div class="cover">
+        <img class="ratio" src="https://picsum.photos/seed/catcher/400/560" alt="The Catcher in the Rye cover">
+        <button class="favorite-button" aria-label="Add to favorites" title="Add to favorites">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.01 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.01 20 8.5c0 3.78-3.4 6.86-8.55 11.54l-1.449 1.31z"/></svg>
+        </button>
+      </div>
+      <div class="book-info">
+        <h3 class="book-title">The Catcher in the Rye</h3>
+        <p class="book-meta">J. D. Salinger · 1951</p>
+        <div class="actions">
+          <span class="badge available">Available</span>
+          <button class="button primary take-button">Take</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card" data-id="mobydick" data-title="Moby Dick" data-author="Herman Melville" data-year="1851" data-status="taken">
+      <div class="cover">
+        <img class="ratio" src="https://picsum.photos/seed/mobydick/400/560" alt="Moby Dick cover">
+        <button class="favorite-button" aria-label="Add to favorites" title="Add to favorites">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.01 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.01 20 8.5c0 3.78-3.4 6.86-8.55 11.54l-1.449 1.31z"/></svg>
+        </button>
+      </div>
+      <div class="book-info">
+        <h3 class="book-title">Moby Dick</h3>
+        <p class="book-meta">Herman Melville · 1851</p>
+        <div class="actions">
+          <span class="badge taken">Taken</span>
+          <button class="button gray take-button">Taken</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card" data-id="pride" data-title="Pride and Prejudice" data-author="Jane Austen" data-year="1813" data-status="available">
+      <div class="cover">
+        <img class="ratio" src="https://picsum.photos/seed/pride/400/560" alt="Pride and Prejudice cover">
+        <button class="favorite-button" aria-label="Add to favorites" title="Add to favorites">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.01 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.01 20 8.5c0 3.78-3.4 6.86-8.55 11.54l-1.449 1.31z"/></svg>
+        </button>
+      </div>
+      <div class="book-info">
+        <h3 class="book-title">Pride and Prejudice</h3>
+        <p class="book-meta">Jane Austen · 1813</p>
+        <div class="actions">
+          <span class="badge available">Available</span>
+          <button class="button primary take-button">Take</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card" data-id="hobbit" data-title="The Hobbit" data-author="J. R. R. Tolkien" data-year="1937" data-status="available">
+      <div class="cover">
+        <img class="ratio" src="https://picsum.photos/seed/hobbit/400/560" alt="The Hobbit cover">
+        <button class="favorite-button" aria-label="Add to favorites" title="Add to favorites">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.01 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.01 20 8.5c0 3.78-3.4 6.86-8.55 11.54l-1.449 1.31z"/></svg>
+        </button>
+      </div>
+      <div class="book-info">
+        <h3 class="book-title">The Hobbit</h3>
+        <p class="book-meta">J. R. R. Tolkien · 1937</p>
+        <div class="actions">
+          <span class="badge available">Available</span>
+          <button class="button primary take-button">Take</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="book-card" data-id="gatsby2" data-title="The Great Gatsby (2nd Ed.)" data-author="F. Scott Fitzgerald" data-year="1925" data-status="available">
+      <div class="cover">
+        <img class="ratio" src="https://picsum.photos/seed/gatsby2/400/560" alt="The Great Gatsby (2nd Ed.) cover">
+        <button class="favorite-button" aria-label="Add to favorites" title="Add to favorites">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.01 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.01 20 8.5c0 3.78-3.4 6.86-8.55 11.54l-1.449 1.31z"/></svg>
+        </button>
+      </div>
+      <div class="book-info">
+        <h3 class="book-title">The Great Gatsby (2nd Ed.)</h3>
+        <p class="book-meta">F. Scott Fitzgerald · 1925</p>
+        <div class="actions">
+          <span class="badge available">Available</span>
+          <button class="button primary take-button">Take</button>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<script src="script.js" defer></script>
+</body>
+</html>

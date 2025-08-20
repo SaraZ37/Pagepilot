@@ -21,15 +21,15 @@ fetch("api/loans")
 function displayBorrowed(loans) {
     loans.forEach(loan => {
         borrowedList.innerHTML += `
-    <div class="book-row">
+<div class="book-row">
   <img src="https://img.freepik.com/premium-vector/blue-3d-book-vector-icon-hardcover-educational-literature_92753-6691.jpg" alt="Book cover image">
   <div>
     <p class="row-title">${loan.bookTitle}</p>
     <p class="row-meta">${loan.bookAuthor}</p>
-    <span class="badge dates">Borrowed: ${loan.borrowedDate} → Due to date: ${loan.dueDate}</span>
   </div>
-  <button class="button primary return-button">Return</button>
+  <span class="badge dates">Borrowed: ${loan.borrowedDate} → Due to date: ${loan.dueDate}</span>
 </div>
+<button class="button accent-600 take-button">Return</button>
             `;
 
     });

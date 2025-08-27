@@ -41,8 +41,37 @@ public class LoanController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdLoan);
     }
 
+    // US-05: Borrow book with validations (GET request for easy browser testing)
+    @GetMapping("/borrow/{userId}/{bookId}")
+    public String borrowBook(@PathVariable Integer userId, @PathVariable Integer bookId) {
+        return loanService.borrowBook(userId, bookId);
+    }
 
+    // US-05: Check if user can borrow (no overdue books)
+    @GetMapping("/check-user/{userId}")
+    public String checkUserBorrowingStatus(@PathVariable Integer userId) {
+        if (loanService.userHasOverdueBooks(userId)) {
+            List<String> overdueBooks = loanService.getUserOverdueBooks(userId);
+            return "Cannot borrow: You have " + overdueBooks.size() + " overdue books - " +
+                    String.join(", ", overdueBooks);
+        } else {
+            return "You can borrow books";
+        }
+    }
 
+    // US-05: Check book availability
+    @GetMapping("/check-book/{bookId}")
+    public String checkBookAvailability(@PathVariable Integer bookId) {
+        if (loanService.isBookCurrentlyBorrowed(bookId)) {
+            return "Borrowed - " + loanService.getBookAvailabilityDate(bookId);
+        } else {
+            return "Available for borrowing";
+        }
+    }
 
-
+    // US-05: Get user's overdue books
+    @GetMapping("/overdue/{userId}")
+    public List<String> getOverdueBooks(@PathVariable Integer userId) {
+        return loanService.getUserOverdueBooks(userId);
+    }
 }

@@ -52,7 +52,7 @@ public class UserController {
         return ResponseEntity.ok(result);
     }*/
     @GetMapping("/{userId}/loans")
-    public ResponseEntity<?> getUserLoans(@PathVariable String userId) {
+    public ResponseEntity<?> getUserLoans(@PathVariable Integer userId) {
         User user = userService.findById(userId);
         List<Loan> currentLoans = loanService.getCurrentUserLoans(user);
         List<Loan> loansHistory = loanService.getPastUserLoans(user);
